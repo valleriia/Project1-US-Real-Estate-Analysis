@@ -1,3 +1,3 @@
-# Project1 Real Estate Analysis 
+# Real Estate Analysis 
 
-<img src="/image/1.jpg" width="1100" height="550">
+<img src="/image/1.jpg" width="550" height="250" align=" center">
