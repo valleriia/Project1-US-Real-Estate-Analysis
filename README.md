@@ -8,3 +8,24 @@
 - We obtained the StreetEasyPrice Index using the Sales Data in Manhattan, Brooklyn, Queens and NYC, [All Home Type](https://streeteasy.com/blog/data-dashboard/?agg=Index&metric=StreetEasy%20Price%20Index&type=Sales&bedrooms=Any%20Bedrooms&property=Any%20Property%20Type&minDate=2010-01-01&maxDate=2020-12-01&area=Flatiron,Brooklyn%20Heights)
 - We obtained past 2 years data for United States from [ZillowStatic](https://files.zillowstatic.com/research/public_v2/zhvi/Metro_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_mon.csv)
 
+
+### **Data Cleaning and Preparation**
+
+Set Paths and Read CSVs
+```python
+iyr_data = Path("resources/IYR.csv")
+iyr_df = pd.read_csv(iyr_data, index_col="Date", parse_dates=True, infer_datetime_format=True)
+```
+Combine Dataframes
+```python
+combined_df = pd.concat([iyr_df, dia_df, vno_df, sp500_df], axis="columns", join="inner")
+combined_df.sort_index()
+combined_df.columns = ["IYR", "DIA", "VNO", "S&P 500"]
+```
+Calculations
+```python
+daily_returns = combined_df.pct_change().dropna()
+dia_beta_mkt = dia_covariance_mkt / mkt_variance
+rolling_variance = daily_returns['S&P 500'].rolling(window=30).var()
+```
+
