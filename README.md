@@ -42,7 +42,21 @@ vno_beta_mkt = vno_covariance_mkt / mkt_variance
 
 print(f"IYR: {iyr_beta_mkt} | DIA: {dia_beta_mkt} | VNO: {vno_beta_mkt}")
 ```
+#### **Monte Carlo Simulation**
+Run 100 simulations in 5 years
+```python
+from MCForecastTools import MCSimulation
 
+MC_fiveyear = MCSimulation(
+    portfolio_data = df_ticker,
+    weights = [.25,.25,.25,.25],
+    num_simulation = 100,
+    num_trading_days = 252*5
+)
+
+line_plot = MC_fiveyear.plot_simulation()
+line_plot.get_figure().savefig("MC_fiveyear_sim_plot.png", bbox_inches="tight")
+```
 
 # 
 
