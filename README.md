@@ -57,6 +57,22 @@ MC_fiveyear = MCSimulation(
 line_plot = MC_fiveyear.plot_simulation()
 line_plot.get_figure().savefig("MC_fiveyear_sim_plot.png", bbox_inches="tight")
 ```
+### **Plots**
 
-# 
+![Mean Price Index for 10 Years](image/price_index.png)
 
+![rolling](image/rolling.png)
+
+![rolling_beta](image/rolling_beta.png)
+
+![MCs_5years](image/MC_fiveyear_sim_plot.png)
+
+![distribution_plot](image/distribution_plot.png)
+
+![correlation](image/correlation.png)
+
+![regression](image/regression.png)
+
+![heatmap](image/heatmap.png)
+
+![covidmap](image/covidmap.png)
