@@ -22,10 +22,27 @@ combined_df = pd.concat([iyr_df, dia_df, vno_df, sp500_df], axis="columns", join
 combined_df.sort_index()
 combined_df.columns = ["IYR", "DIA", "VNO", "S&P 500"]
 ```
-Calculations
+
+### **Calculation**
+
 ```python
+#Calculate daily returns of closing prices
 daily_returns = combined_df.pct_change().dropna()
+
+# Calculate covariance of all daily returns
+iyr_covariance_mkt = daily_returns['IYR'].cov(daily_returns['S&P 500'])
+
+# Calculate variance of all daily returns
+mkt_variance = daily_returns['S&P 500'].var()
+
+# Calculate beta of all daily returns versus the S&P 500 ("The Market")
+iyr_beta_mkt = iyr_covariance_mkt / mkt_variance
 dia_beta_mkt = dia_covariance_mkt / mkt_variance
-rolling_variance = daily_returns['S&P 500'].rolling(window=30).var()
+vno_beta_mkt = vno_covariance_mkt / mkt_variance
+
+print(f"IYR: {iyr_beta_mkt} | DIA: {dia_beta_mkt} | VNO: {vno_beta_mkt}")
 ```
+
+
+# 
 
