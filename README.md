@@ -1,4 +1,4 @@
-# US Real Estate Analysis 
+# U.S. Residential Real Estate Analysis and the Global Pandemic
 **A guide by Yasir Malik, Valeriia Darkhanova, Susan Fan and Wes Sapone**
 
 <img src="/image/1.jpg" width="550" height="250" align=" center">
